@@ -1,21 +1,12 @@
-//
-//  ContentView.swift
-//  TestApp
-//
-//  Created by Dominic Valencia on 4/1/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    private let orderProvider: OrderProviding = MockOrderService(
+        scenario: .success(MockOrderService.sampleOrders())
+    )
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        OrderListView(orderProvider: orderProvider)
     }
 }
 
